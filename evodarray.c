@@ -15,22 +15,29 @@ int main()
 
     for(i=0;i<=9;i++)
     {
-        if(a[i]%2==0)
+        for(int j=i+1;i<5;j++)
         {
-            evsum=evsum+a[i];
-            cnt++;
+            if(a[i]%2==0)
+            {
+                evsum=evsum+a[i];
+                cnt++;
 
-            //printf("The number %d is even \n",a[i]);
-        }else
-        {
-            odsum=odsum+a[i];
-            cnt1++;
-            //printf("The number %d is odd\n",a[i]);
-        }
+                //printf("The number %d is even \n",a[i]);
+            }else
+            {
+                odsum=odsum+a[i];
+                cnt1++;
+                //printf("The number %d is odd\n",a[i]);
+            }
+        }    
     }
 
-    printf("The Total even numbers are : %d and Sum is %d\n",cnt,evsum);
-    printf("The Total odd numbers are  : %d and Sum is %d\n",cnt1,odsum);
+    for(int i=0;i<5;i++)
+    {
+        printf("\t%d",arr[i]);
+    }
+
+    
 
 
 
