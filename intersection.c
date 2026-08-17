@@ -8,7 +8,6 @@ int main()
     int flag;
     printf("Enter how many numbers do you want in set 1: ");
     scanf("%d", &l1);
-
     printf("Enter %d numbers in set1:\n", l1);
     for(i = 0; i < l1; i++)
     {
