@@ -1,8 +1,16 @@
-no=int(input("Enter any number :"))
 
 rem=0
-for i in no:
+sum=0
+no=int(input("Enter any number :"))
+tem=no
+while no>0:
     rem=no%10
-    rem+=i
+    sum+=rem
+    no//=10
 
-print(rem)
+if(tem%sum==0):
+    print("The no is neon number")
+else :
+    print("the no is not neon number ")
+   
+
