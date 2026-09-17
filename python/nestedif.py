@@ -4,7 +4,7 @@ if no<0:
         print("The Number is Even ")
     else :
         print("The Number is Odd")
-elif no>0
+elif no>0:
     print("The number is -ve")
 else :
     print("The number is 0")
