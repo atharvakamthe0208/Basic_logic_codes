@@ -25,8 +25,9 @@ int getmax(int arr[],int len)
     {
         count[i]+=count[i-1];
     }
+    //insert elements into temp array using the indexing stored in the count array 
+    //temp array = output[len]
     int output[len];
-
     for(int i=len-1;i>=0;i--)
     {
         int digit=(arr[i]/expo)%10;
