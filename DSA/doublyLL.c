@@ -29,13 +29,22 @@ void inserttoend(int val){
 
     newnode->data=val;
     newnode->next=NULL;
-    newnode->prev=head;
 
-    if (head!=NULL)
+    if (head==NULL)
     {
-        head->next=newnode;
+        head=newnode;
+        newnode->prev=NULL;
+        return;
     }
-    head=newnode;
+
+    struct node *temp =head;
+    while (temp->next!=NULL)
+    {
+       temp=temp->next;
+    }
+    
+    newnode->prev=temp;
+    temp->next=newnode;
 
 }
 void deletefrombegin()
@@ -53,8 +62,29 @@ void deletefrombegin()
     printf("value removed");
 
 }
+void deletefromend()
+{
+    
+    if(head==NULL)
+    {
+        printf("Linked list is empty ");
+        return;
+    }
+    struct node *temp=head;
+    while (temp->next!=NULL)
+    {
+       temp=temp->next;
+    }
+
+    temp->prev->next=NULL;
+    free(temp);
+    printf("value removed ");
+
+
+}
 void display()
 {
+    printf("\n");
     if(head==NULL)
     {
         printf("The list is empty ");
@@ -64,7 +94,7 @@ void display()
     while (temp!=NULL)
     {
         printf(" %d->",temp->data);
-        temp=temp->prev;
+        temp=temp->next;
     }
     
 }
@@ -76,13 +106,16 @@ int main()
     inserttoend(30);
     inserttoend(40);
     display();
+    
     // insertfrombegin(10);
     // insertfrombegin(20);
     // insertfrombegin(30);
-    // insertfrombegin(40);
-    // display();
-    // deletefrombegin();
-    printf("\n");
+    insertfrombegin(40);
+    display();
+    deletefrombegin();
+    
+    deletefromend();
+    
     display();
     return 0;
 
