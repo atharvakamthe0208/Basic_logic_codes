@@ -52,25 +52,31 @@ void deletefrombegin()
     struct node * temp=head;
     if(head==NULL)
     {
-        printf("Linked list is empty ");
+        printf("\nLinked list is empty ");
         return;
     }
 
     head=temp->next;
     head->prev=NULL;
     free(temp);
-    printf("value removed");
+    printf("\nvalue removed ");
 
 }
 void deletefromend()
 {
-    
-    if(head==NULL)
-    {
-        printf("Linked list is empty ");
-        return;
-    }
     struct node *temp=head;
+     if(head==NULL)
+    {
+        printf("\nLinked list is empty ");
+        return;
+    }       
+    if(head->next==NULL)
+    {
+        head=NULL;
+        free(temp);
+        return ;
+    }
+    
     while (temp->next!=NULL)
     {
        temp=temp->next;
@@ -78,7 +84,7 @@ void deletefromend()
 
     temp->prev->next=NULL;
     free(temp);
-    printf("value removed ");
+    printf("\nvalue removed ");
 
 
 }
@@ -87,7 +93,7 @@ void display()
     printf("\n");
     if(head==NULL)
     {
-        printf("The list is empty ");
+        printf("\nThe list is empty ");
     }
     struct node *temp=head;
 
@@ -96,6 +102,23 @@ void display()
         printf(" %d->",temp->data);
         temp=temp->next;
     }
+    
+}
+void search(int val)
+{
+    struct node *temp=head;
+    int cnt=0;
+    while (temp!=NULL)
+    {
+        cnt++;
+        if(temp->data==val)
+        {
+            printf("\ndata found at index %d",cnt);
+            return;
+        }
+        temp=temp->next;
+    }
+    printf("\ndata not found"); 
     
 }
 int main()
@@ -112,10 +135,9 @@ int main()
     // insertfrombegin(30);
     insertfrombegin(40);
     display();
+    search(266);
     deletefrombegin();
-    
-    deletefromend();
-    
+    search(10);
     display();
     return 0;
 
