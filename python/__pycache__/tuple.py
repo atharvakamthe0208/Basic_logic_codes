@@ -23,7 +23,28 @@ sum=0
 for i in stud:
     sum=i[1]+i[2]+i[3]
     nam=i[0]
-    print(nam,"Total is  :",sum)
+    print(nam,"Total is      :",sum)
+
+n=int(input("Enter the no of elements :"))
+l3=[]
+
+n = int(input("Enter number of students: "))
+
+stud = ()
+
+for i in range(n):
+    name = input("Enter name: ")
+    m1 = int(input("Enter marks 1: "))
+    m2 = int(input("Enter marks 2: "))
+    m3 = int(input("Enter marks 3: "))
+
+    stud = stud + ((name, m1, m2, m3),)
+
+print("\nStudent Details:")
+print(stud)
 
 
 
+data = tuple(input("Enter elements separated by space: ").split())
+
+print("Tuple =", data)
