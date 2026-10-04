@@ -42,7 +42,7 @@ void display()
 
         if(head==NULL)
         {
-            printf("Linked list is empty ");
+            printf("\nLinked list is empty ");
             return;
         }
 
@@ -51,30 +51,31 @@ void display()
             printf("%d->\t",temp->data);
             temp=temp->add;
         }
-        while(temp->add=head)
-        {
-            printf("%d->\t",temp->data);
-            return;
-        }
+        printf("%d->\t\n",temp->data);
+    
 
 }
-void deletetoend()
+void deletefromend()
 {
     struct node *temp=head;
-    struct node *prev = head;
     if(head == NULL)
     {
-        printf("Linked list is empty");
+        printf("Linked list is empty 1");
         return;
     }
-     
-    while (temp->add!=head)
+    if(head->add==head)
     {
-        prev = temp;
-        temp = temp->add;
+        head=NULL;
+        return;
     }
-    prev->add = head;
-    free(temp);
+    while (temp->add->add!=head)
+    {
+        temp = temp->add;
+
+    }
+    free(temp->add);
+    temp->add = head;
+    
 }
 int main()
 {
@@ -83,6 +84,16 @@ int main()
     inserttoend(30);
     inserttoend(40);
     display();
-    deletetoend();
+    deletefromend();
+    display();
+    deletefromend();
+    display();
+    deletefromend();
+    display();
+    deletefromend();
+    display();
+    deletefromend();
+    display();
+
     return 0;
 }
