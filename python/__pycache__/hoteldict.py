@@ -1,101 +1,84 @@
-starters = {
-    "Paneer Tikka": 180,
-    "Veg Manchurian": 150,
-    "Spring Roll": 120
+food = {
+    "Starter": {
+        1: {"Masala Papad": 100},
+        2: {"Manchurian": 200},
+        3: {"Spring Roll": 300}
+    },
+
+    "Veg": {
+        1: {"Paneer Butter Masala": 250},
+        2: {"Dum Aloo": 220},
+        3: {"Veg Maratha": 280}
+    },
+
+    "Non-Veg": {
+        1: {"Chicken Curry": 350},
+        2: {"Chicken Biryani": 400},
+        3: {"Mutton Curry": 500}
+    },
+
+    "Dessert": {
+        1: {"Ice Cream": 100},
+        2: {"Gulab Jamun": 80},
+        3: {"Brownie": 150}
+    }
 }
 
-main_course = {
-    "Paneer Butter Masala": 220,
-    "Veg Biryani": 180,
-    "Veg Fried Rice": 160,
-    "Butter Naan": 40
-}
+total = 0
+ch = 1
 
-desserts = {
-    "Gulab Jamun": 80,
-    "Ice Cream": 70,
-    "Brownie": 100
-}
+print("========== HOTEL MENU ==========")
 
-
-order = []
-a = 1
-
-while a == 1:
+while ch == 1:
 
     print("\n1. Starter")
-    print("2. Main Course")
-    print("3. Dessert")
+    print("2. Veg")
+    print("3. Non-Veg")
+    print("4. Dessert")
 
-    ch = input("Enter your choice: ")
+    category_choice = int(input("Select Category: "))
 
-    match ch:
+    if category_choice == 1:
+        category = "Starter"
+    elif category_choice == 2:
+        category = "Veg"
+    elif category_choice == 3:
+        category = "Non-Veg"
+    elif category_choice == 4:
+        category = "Dessert"
+    else:
+        print("Invalid Choice")
+        continue
 
-        case "1":
+    print(f"\n---- {category} Menu ----")
 
-            b = 1
+    for item_no, item_dict in food[category].items():
+        for item, price in item_dict.items():
+            print(item_no, ".", item, "=", price)
 
-            while b == 1:
+    item_choice = int(input("Enter Item Number: "))
 
-                o = 1
+    if item_choice in food[category]:
 
-                for i, v in starters.items():
-                    print(o, i, v)
-                    o += 1
+        item_dict = food[category][item_choice]
 
-                on = int(input("Enter your choice: "))
+        for item, price in item_dict.items():
 
-                order.append(["Starter", on])
+            qty = int(input("Enter Quantity: "))
 
-                print("Order is placed")
+            amount = price * qty
+            total += amount
 
-                b = int(input("Do you want to continue? Press 1: "))
+            print("Item :", item)
+            print("Price :", price)
+            print("Quantity :", qty)
+            print("Amount :", amount)
 
+    else:
+        print("Invalid Item")
 
-        case "2":
+    ch = int(input("\nDo you want to continue? (1-Yes / 0-No): "))
 
-            b = 1
-
-            while b == 1:
-
-                o = 1
-
-                for i, v in main_course.items():
-                    print(o, i, v)
-                    o += 1
-
-                on = int(input("Enter your choice: "))
-
-                order.append(["Main Course", on])
-
-                print("Order is placed")
-
-                b = int(input("Do you want to continue? Press 1: "))
-
-
-        case "3":
-
-            b = 1
-
-            while b == 1:
-
-                o = 1
-
-                for i, v in desserts.items():
-                    print(o, i, v)
-                    o += 1
-
-                on = int(input("Enter your choice: "))
-
-                order.append(["Dessert", on])
-
-                print("Order is placed")
-
-                b = int(input("Do you want to continue? Press 1: "))
-
-
-        case _:
-
-            print("Invalid choice")
-
-    a = int(input("\nDo you want to change menu? Press 1: "))
+print("\n========== BILL ==========")
+print("Total Bill =", total)
+print("Thank You Visit Again!")
