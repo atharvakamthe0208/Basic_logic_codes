@@ -36,31 +36,31 @@ while ch == 1:
     print("3. Non-Veg")
     print("4. Dessert")
 
-    category_choice = int(input("Select Category: "))
+    cat_ch= int(input("Select Category: "))
 
-    if category_choice == 1:
-        category = "Starter"
-    elif category_choice == 2:
-        category = "Veg"
-    elif category_choice == 3:
-        category = "Non-Veg"
-    elif category_choice == 4:
-        category = "Dessert"
+    if cat_ch == 1:
+        cat = "Starter"
+    elif cat_ch == 2:
+        cat = "Veg"
+    elif cat_ch == 3:
+        cat = "Non-Veg"
+    elif cat_ch == 4:
+        cat = "Dessert"
     else:
         print("Invalid Choice")
         continue
 
-    print(f"\n---- {category} Menu ----")
+    print(f"\n---- {cat} Menu ----")
 
-    for item_no, item_dict in food[category].items():
+    for item_no, item_dict in food[cat].items():
         for item, price in item_dict.items():
             print(item_no, ".", item, "=", price)
 
     item_choice = int(input("Enter Item Number: "))
 
-    if item_choice in food[category]:
+    if item_choice in food[cat]:
 
-        item_dict = food[category][item_choice]
+        item_dict = food[cat][item_choice]
 
         for item, price in item_dict.items():
 
