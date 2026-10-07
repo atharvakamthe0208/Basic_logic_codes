@@ -16,7 +16,7 @@ class demo:
         print("maths   :",self.m2)
         print("Science :",self.m3)
         print("Total :",self.tot)
-        print("Average :",self.avg)
+        #print("Average :",self.avg)
         print("Percentage :",self.per)
 
     def calculate(self):
@@ -25,7 +25,19 @@ class demo:
         self.per=self.tot/300*100
 
 
-d=demo()
-d.accept()
-d.calculate()
-d.show()
+
+
+
+lst=[]
+while True:
+    d=demo()
+    d.accept()
+    d.calculate()
+    lst.append(d)
+
+    c=int(input("Do you want to continue press 1"))
+    if c!=1:
+        break
+
+for s in lst:
+    d.show()
