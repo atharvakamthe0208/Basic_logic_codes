@@ -15,12 +15,15 @@ class demo:
         print("Eng     :",self.m1)
         print("maths   :",self.m2)
         print("Science :",self.m3)
+        print("Total :",self.tot)
+        print("Average :",self.avg)
+        print("Percentage :",self.per)
 
     def calculate(self):
         self.tot=self.m1+self.m2+self.m3
         self.avg=self.tot/3
-        print("Total :",self.tot)
-        print("Average :",self.avg)
+        self.per=(self.tot/300)*100
+
 
 d=demo()
 d.accept()
