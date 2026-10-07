@@ -22,7 +22,7 @@ class demo:
     def calculate(self):
         self.tot=self.m1+self.m2+self.m3
         self.avg=self.tot/3
-        self.per=(self.tot/300)*100
+        self.per=self.tot/300*100
 
 
 d=demo()
