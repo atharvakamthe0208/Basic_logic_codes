@@ -30,3 +30,4 @@ class emp:
 
 e3=emp("Atharva",10.2)
 print("Name is ",e3.show())
+print("Name is ",e3._emp__per)
