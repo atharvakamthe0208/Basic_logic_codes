@@ -44,7 +44,7 @@ void display(){
     }
 }
 
-// —— IMPLEMENTED SEARCH FUNCTION ——
+
 int search(int val)
 {
     // 1. Find the bucket index using the hash function
@@ -61,26 +61,110 @@ int search(int val)
     
     return -1; // Key not found
 }
+void update(int oldval,int newval)
+{
+    int index1=hashFunction(oldval);
+    int index2=hashFunction(newval);
+
+    if(index1!=index2)
+    {
+        printf("Update is not possible at particular pos \n");
+        return;
+    }
+
+    struct Node *current=table[index1];
+
+    while (current!=NULL)
+    {
+        if(current->key==oldval)
+        {
+            current->key=newval;
+            printf("Value Updated\n");
+            return;
+        }
+
+        current=current->next;
+        
+    }
+    
+}
+
+void delete(int data)
+{
+    int index=hashFunction(data);
+
+    struct Node *current=table[index];
+    struct Node *prev=NULL;
+
+    if(current==NULL)
+    {
+        printf("Postion is empty");
+        return;
+    }
+
+    
+    while (current!=NULL)
+    {
+       
+        if(current->key==data)
+        {
+            if(prev==NULL)
+            {
+                table[index]=current->next;
+            }else
+            {
+                prev->next=current->next;
+                
+            }
+            
+            free(current);
+            printf("%d key deleted \n",data);
+            return;
+        
+        }
+        current=current->next;
+    }
+
+}
 
 int main()
 {
     insert(23);
     insert(43);
     insert(73);
-    insert(45);
-    printf("\n--- Hash Table State ---\n");
+
+    insert(55);
     display();
-    printf("\n--- Search Test ---\n");
-    
-    int target = 43;
-    int res = search(target);
-    
-    if(res == -1)
-    {
-        printf("Key %d not found in the hash table.\n", target);
-    } else {
-        printf("Key %d found at index %d.\n", target, res);
-    }
-    
-    return 0;
+    printf("-------Hash Table-----\n");
+
+    // update(43,53);
+    // display();
+    printf("-------------------------");
+    printf("-------hash table---------");
+    delete(73);
+    delete(43);
+    display();
 }
+
+// int main()
+// {
+//     insert(23);
+//     insert(43);
+//     insert(73);
+//     insert(45);
+//     printf("\n--- Hash Table State ---\n");
+//     display();
+    
+    
+//     int target=43;
+//     int res = search(target);
+    
+//     if(res == -1)
+//     {
+//         printf("Key %d not found in the hash table.\n", target);
+//     } else {
+//         printf("Key %d found at index %d.\n", target, res);
+//     }
+    
+//     return 0;
+// }
