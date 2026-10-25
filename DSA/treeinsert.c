@@ -95,7 +95,43 @@ void Inorder(struct Node *node)
     Inorder(node->right);
     
 }
+int search(struct Node *node ,int key)
+{
+    if(node==NULL)
+    {
+        return 0;
+    }
 
+    if(node->data==key)
+    {
+        return 1;
+    }
+
+    return search(node->left,key)||search(node->right,key);
+}    
+
+int countNodes(struct Node *node)//a100
+{
+    if(node==NULL)
+    {
+        return 0;
+    }
+
+    return 1+countNodes(node->left)+countNodes(node->right);
+}
+int countleaves(struct Node *node)//A100
+{
+    if(node==NULL)
+    {
+        return 0;
+    }
+
+    if(node->left==NULL&&node->right==NULL){
+        return 1;
+    }
+
+    return countleaves(node->left)+countleaves(node->right);
+}
 int main()
 {
     insert(10);
@@ -113,5 +149,23 @@ int main()
     printf("Inorder   :");
     Inorder(root);
     printf("\n");
-    return 0;
+
+    int key;
+    printf("\nEnter Key :");
+    scanf("%d",&key);
+    int res=search(root,key);
+    if(res){
+        printf("Key Found \n");
+    }else{
+        printf("Key not found \n");
+    }
+
+    int count=countNodes(root);
+    printf("\nNo of Nodes :%d",count);
+   
+
+    int leafnode=countleaves(root);
+    printf("\nNo of Leaf nodes:%d",leafnode);
+
+     return 0;
 }
